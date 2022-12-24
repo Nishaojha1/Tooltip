@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-
+import Navbar from "./components/Navbar";
+import Tooltip from "./components/Tooltip";
+import "./index.css";
+import { useState } from "react";
 function App() {
+  // setting initial state as nothing 
+  const [position, setPosition] = useState("nothing");
+  // when position is come back from  nave bar we use below function to render them as new state
+  const toggleMode = (position) => {
+    setPosition(position);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="App">
+        {/* adding navbar and tooltip as component */}
+        <Navbar position={position} toggleMode={toggleMode} />
+        <Tooltip position={position} />
+      </div>
+    </>
   );
 }
 
